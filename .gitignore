@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# dotenv environment files
+.env
+
+# Logs
+logs/
+*.log
+
+# Operating system files
+.DS_Store
+
+# IDE and editor files
+.vscode/
+.idea/
