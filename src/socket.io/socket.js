@@ -10,11 +10,21 @@ const app = express();
 const server = http.createServer(app);
 
 const io = new Server(server, {
-  cors: {
-    origin: process.env.FRONTEND_URL ,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+ cors({
+  origin: (origin, callback) => {
+    // Allow specific domains only (in production, list allowed domains explicitly)
+    const allowedOrigins = [
+      'https://media-4ba1.vercel.app', // Production domain
+      /\.vercel\.app$/ // Allows any Vercel deployment
+    ];
+    if (!origin || allowedOrigins.some(o => new RegExp(o).test(origin))) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
   },
+  credentials: true,
+})
 });
 
 const userSocketMap = {}; //userId : soketId
