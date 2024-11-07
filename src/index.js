@@ -14,9 +14,19 @@ const emitter = new EventEmitter();
  
  
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],  
-  credentials: true,  
+  origin: (origin, callback) => {
+    // Allow specific domains only (in production, list allowed domains explicitly)
+    const allowedOrigins = [
+      'https://media-4ba1.vercel.app', // Production domain
+      /\.vercel\.app$/ // Allows any Vercel deployment
+    ];
+    if (!origin || allowedOrigins.some(o => new RegExp(o).test(origin))) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
 }));
 app.use(cors(corsOptions));
 
