@@ -14,7 +14,7 @@ const emitter = new EventEmitter();
  
 
 const corsOptions = {
-    origin: 'http://localhost:5173',  
+    origin: 'https://media-4ba1.vercel.app',  
     credentials: true,
   };
 
