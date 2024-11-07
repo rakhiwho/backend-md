@@ -12,12 +12,12 @@ import path from 'path'
 const emitter = new EventEmitter();
 
  
-
-const corsOptions = {
-    origin: 'https://media-4ba1.vercel.app',  
-    credentials: true,
-  };
-
+ 
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],  
+  credentials: true,  
+}));
 app.use(cors(corsOptions));
 
 
