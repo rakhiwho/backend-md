@@ -32,8 +32,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/user' , authRouter);
-
-server.attach(app);
+ 
 
 // Export the app for Vercel's serverless environment
 export default app;
