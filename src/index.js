@@ -9,10 +9,7 @@ import cookieParser from 'cookie-parser'
 import {app , server} from './socket.io/socket.js'
 import path from 'path'
  config();
-const emitter = new EventEmitter();
-
- 
-
+const emitter = new EventEmitter(); 
 const corsOptions = {
  
   origin: 'https://media-4ba1.vercel.app',
