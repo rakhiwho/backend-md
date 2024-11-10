@@ -19,7 +19,7 @@ const io = new Server(server, {
       } else {
         callback(new Error('Not allowed by CORS'));
       }
-    }, ,
+    }, 
     methods: ['GET', 'POST'],
     credentials: true,
   },
