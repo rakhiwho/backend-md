@@ -12,11 +12,11 @@ import path from 'path'
 const emitter = new EventEmitter(); 
 const corsOptions = {
  
-  origin: 'https://media-4ba1.vercel.app',
+ origin: 'https://media-4ba1-mjiutgaul-rakhiwhos-projects.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true,
- 
-  };
+  credentials: true,  
+};
+
 
 app.use(cors(corsOptions));
 
