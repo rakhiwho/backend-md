@@ -4,7 +4,17 @@ import express from "express";
 import mongoose from "mongoose";
 import multer from "multer";
 import { ChildProcess } from "child_process";
-); const app = express();
+); 
+const app = express();
+app.use((req, res, next) => {
+    res.set({
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "*",
+        "Access-Control-Allow-Headers": "'Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token'",
+    });
+
+    next();
+});
 const corsOptions = { 
  origin: "https://media-bice.vercel.app", 
          methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
@@ -16,15 +26,7 @@ const io = new Server(server, {
   origin: "https://media-bice.vercel.app", 
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
       credentials: true, }, });
-app.use((req, res, next) => {
-    res.set({
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "*",
-        "Access-Control-Allow-Headers": "'Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token'",
-    });
 
-    next();
-});
 const userSocketMap = {}; //userId : soketId
 
 export const getRecieverSocketID = (receiverID) => {
