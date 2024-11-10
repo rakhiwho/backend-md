@@ -13,7 +13,7 @@ const emitter = new EventEmitter();
 const allowedOriginRegex = /^https:\/\/media-4ba1(-[a-zA-Z0-9]+)?\.vercel\.app$/;
 
 const corsOptions = {
-  origin: process.env.FRONTEND ,
+  origin: true ,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 };
