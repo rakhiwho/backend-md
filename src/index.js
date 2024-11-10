@@ -14,7 +14,8 @@ const allowedOriginRegex = /^https:\/\/media-4ba1(-[a-zA-Z0-9]+)?\.vercel\.app$/
 
 const corsOptions = {
   origin: (origin, callback) => {
-    if (allowedOriginRegex.test(origin)) {
+    if (!origin || allowedOriginRegex.test(origin)) {
+      
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -23,7 +24,6 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 };
-
 
 app.use(cors(corsOptions));
 
