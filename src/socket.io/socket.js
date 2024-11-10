@@ -4,14 +4,18 @@ import express from "express";
 import mongoose from "mongoose";
 import multer from "multer";
 import { ChildProcess } from "child_process";
-
-const app = express();
-
-const server = https.createServer(app);
- 
- 
-const io = new Server(server);
- 
+); const app = express();
+const corsOptions = { 
+ origin: "https://media-bice.vercel.app", 
+         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+         credentials: true, }; 
+app.get('/', (req, res) => { res.send('Hello World!'); }); 
+const server = https.createServer(app); 
+const io = new Server(server, {
+ cors: { 
+  origin: "https://media-bice.vercel.app", 
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+      credentials: true, }, });
 
 const userSocketMap = {}; //userId : soketId
 
