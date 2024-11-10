@@ -8,10 +8,12 @@ import { ChildProcess } from "child_process";
 const app = express();
 
 const server = http.createServer(app);
+const allowedOriginRegex = /^https:\/\/media-4ba1(-[a-zA-Z0-9]+)?\.vercel\.app$/;
 
+ 
 const io = new Server(server, {
   cors:{
-  origin: 'https://media-4ba1.vercel.app',
+  origin:allowedOriginRegex,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 },
