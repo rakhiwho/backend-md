@@ -10,7 +10,7 @@ import {app , server} from './socket.io/socket.js'
 import path from 'path'
  config();
 const emitter = new EventEmitter(); 
-const allowedOriginRegex = /^https:\/\/media-4ba1(-[a-zA-Z0-9]+)?\.vercel\.app$/;
+ 
 
 const corsOptions = {
   origin: ["https://media-bice.vercel.app"] ,
