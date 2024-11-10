@@ -12,9 +12,10 @@ const server = http.createServer(app);
  
 const io = new Server(server, {
  cors: {
-    origin: ["https://media-bice.vercel.app"],
+    origin: "https://media-bice.vercel.app",
   methods: ['GET', 'POST'],
     credentials: true,
+ }
 });
  
 
