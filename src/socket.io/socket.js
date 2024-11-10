@@ -14,8 +14,9 @@ const io = new Server(server, {
  cors: {
     origin: "https://media-bice.vercel.app",
       methods: ['GET', 'POST'],
-   path: '/',
- }
+
+ },
+    path: '/',
 });
  
 
