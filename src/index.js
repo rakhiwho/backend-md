@@ -13,14 +13,7 @@ const emitter = new EventEmitter();
 const allowedOriginRegex = /^https:\/\/media-4ba1(-[a-zA-Z0-9]+)?\.vercel\.app$/;
 
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOriginRegex.test(origin)) {
-      
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: process.env.FRONTEND ,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 };
