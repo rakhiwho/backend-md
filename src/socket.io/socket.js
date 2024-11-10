@@ -19,7 +19,7 @@ const corsOptions = {
  origin: "https://media-bice.vercel.app", 
          methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
          credentials: true, }; 
-app.get('/', (req, res) => { res.send('Hello World!')}); 
+ 
 const server = https.createServer(app); 
 const io = new Server(server, {
  cors: { 
