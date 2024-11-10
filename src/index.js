@@ -13,7 +13,7 @@ const emitter = new EventEmitter();
  
 
 const corsOptions = {
-  origin: ["https://media-bice.vercel.app"] ,
+  origin: "https://media-bice.vercel.app" ,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true,
 };
