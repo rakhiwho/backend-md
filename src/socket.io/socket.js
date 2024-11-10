@@ -9,19 +9,14 @@ const app = express();
 
 const server = http.createServer(app);
  
-
- const allowedOriginRegex = /^https:\/\/media-4ba1(-[a-zA-Z0-9]+)?\.vercel\.app$/;
+ 
 const io = new Server(server, {
  cors: {
-    origin: "https://media-bice.vercel.app",
+    origin: ["https://media-bice.vercel.app"],
+  methods: ['GET', 'POST'],
+    credentials: true,
 });
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*'); // Alternatively, use the allowedOriginRegex here for added security.
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-});
+ 
 
 const userSocketMap = {}; //userId : soketId
 
