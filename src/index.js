@@ -10,11 +10,18 @@ import {app , server} from './socket.io/socket.js'
 import path from 'path'
  config();
 const emitter = new EventEmitter(); 
+const allowedOriginRegex = /^https:\/\/media-4ba1(-[a-zA-Z0-9]+)?\.vercel\.app$/;
+
 const corsOptions = {
- 
- origin: 'https://media-4ba1-mjiutgaul-rakhiwhos-projects.vercel.app',
+  origin: (origin, callback) => {
+    if (allowedOriginRegex.test(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true,  
+  credentials: true,
 };
 
 
