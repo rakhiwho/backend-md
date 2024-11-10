@@ -13,13 +13,7 @@ const server = http.createServer(app);
  const allowedOriginRegex = /^https:\/\/media-4ba1(-[a-zA-Z0-9]+)?\.vercel\.app$/;
 const io = new Server(server, {
  cors: {
-    origin: (origin, callback) => {
-      if (!origin || allowedOriginRegex.test(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
+    origin: process.env.FRONTNED ,
     methods: ['GET', 'POST'],
     credentials: true,
   },
