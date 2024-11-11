@@ -11,8 +11,7 @@ import path from 'path'
  config();
 const emitter = new EventEmitter(); 
  
- 
-app.use(cors(corsOptions));
+
 
 
 app.use(express.json());
