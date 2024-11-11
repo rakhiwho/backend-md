@@ -20,9 +20,9 @@ const corsOptions = {
          methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
          credentials: true, }; 
   
-
+ app.use(cors(corsOptions));
 const server = https.createServer(app); 
-// app.use(cors(corsOptions));
+
 const io = new Server(server, {
  cors: { 
   origin: "https://media-bice.vercel.app", 
