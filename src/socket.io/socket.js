@@ -15,10 +15,10 @@ app.use((req, res, next) => {
 
     next();
 });
-// const corsOptions = { 
-//  origin: "https://media-bice.vercel.app", 
-//          methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
-//          credentials: true, }; 
+const corsOptions = { 
+ origin: "https://media-bice.vercel.app", 
+         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+         credentials: true, }; 
   
 
 const server = https.createServer(app); 
