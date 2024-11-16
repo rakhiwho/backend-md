@@ -6,15 +6,7 @@ import multer from "multer";
 import { ChildProcess } from "child_process";
 
 const app = express();
-app.use((req, res, next) => {
-    res.set({
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "*",
-       "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
-    });
 
-    next();
-});
  
 const server = http.createServer(app); 
 
