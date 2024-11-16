@@ -1,5 +1,5 @@
 import { Server } from "socket.io";
-import https from "https";
+import http from "http";
 import express from "express";
 import mongoose from "mongoose";
 import multer from "multer";
@@ -15,13 +15,8 @@ app.use((req, res, next) => {
 
     next();
 });
-const corsOptions = { 
- origin: "https://media-bice.vercel.app", 
-         methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
-         credentials: true, }; 
-  
- app.use(cors(corsOptions));
-const server = https.createServer(app); 
+ 
+const server = http.createServer(app); 
 
 const io = new Server(server, {
  cors: { 
