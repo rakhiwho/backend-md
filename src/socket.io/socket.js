@@ -4,7 +4,7 @@ import express from "express";
 import mongoose from "mongoose";
 import multer from "multer";
 import { ChildProcess } from "child_process";
-); 
+
 const app = express();
 app.use((req, res, next) => {
     res.set({
