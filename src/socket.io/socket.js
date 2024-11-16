@@ -7,15 +7,13 @@ import { ChildProcess } from "child_process";
 
 const app = express();
 
- 
-const server = http.createServer(app); 
+const server = http.createServer(app);
 
-const io = new Server(server, {
+const io = new Server(server , {
  cors: { 
   origin: "https://media-bice.vercel.app", 
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
-      credentials: true, }
-});
+      credentials: true, } } );
 
 const userSocketMap = {}; //userId : soketId
 
