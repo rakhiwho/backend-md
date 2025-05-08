@@ -61,7 +61,7 @@ export const Uplaod_Story = async (req, res) => {
     const { content, story_discription } = req.body;
     const userID = req.user._id;
     const user = await UserModel.findById(userID);
-    console.log(content);
+     
     if (!user) {
       return res.status(404).json("user not found");
     }

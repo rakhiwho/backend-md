@@ -6,7 +6,7 @@ import UserModel from "../Model/user.js";
 export const verifyToken = async (req, res, next) => {
   try {
     const token = req.cookies.access_token;
-
+    console.log(token)
     if (!token) {
       return res.status(401).json({ error: "missing token" });
     }
@@ -17,7 +17,7 @@ export const verifyToken = async (req, res, next) => {
     }
 
     const user = await UserModel.findById(decoded.userID).select("-password");
-    console.log(user)
+     
     if (!user) {
       return res.status(404);
     }

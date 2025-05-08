@@ -104,17 +104,14 @@ export const delete_convo = async (req, res) => {
 
     if (!convo) {
       return res.status(404).json("convo  not found");
-    } 
-    if(user.convos.includes(convo._id)){
-
-        const con = await user.updateOne({ $pull: { convos: convo._id } });
-        return res.status(200).json( con);
     }
-   
-    return res.status(200).json("cant delete this message!")
-   
+    if (user.convos.includes(convo._id)) {
+      const con = await user.updateOne({ $pull: { convos: convo._id } });
+      return res.status(200).json(con);
+    }
+
+    return res.status(200).json("cant delete this message!");
   } catch (error) {
- 
     return res.status(500).json("internal server error");
   }
 };

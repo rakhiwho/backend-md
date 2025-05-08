@@ -200,10 +200,10 @@ export const allPost = async (req, res) => {
       (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
     );
 
-    if (!posts ) {
+    if (!posts) {
       return res.status(404).json({ message: "No posts found" });
     }
-    if (  posts.length === 0) {
+    if (posts.length === 0) {
       return res.status(200).json([]);
     }
 

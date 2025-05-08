@@ -5,7 +5,6 @@ import { UserError } from "../Errors/userError.js";
 import convoModel from "../Model/convo.js";
 
 export const userInfo = async (req, res) => {
-  console.log("hello")
   const { id } = req.params;
 
   try {
@@ -80,8 +79,6 @@ export const friends = async (req, res) => {
       },
     ]);
 
-    console.log(results);
-
     let result = [];
     if (results) {
       for (const u of results) {
@@ -92,11 +89,9 @@ export const friends = async (req, res) => {
         }
       }
     }
-    // If results is empty, return an empty array
+
     return res.status(200).json(result);
   } catch (error) {
-    console.error( error);
-    
     return res.status(500).json("internal error");
   }
 };

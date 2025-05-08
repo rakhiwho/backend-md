@@ -11,7 +11,7 @@ const server = http.createServer(app);
 
 const io = new Server(server , {
  cors: { 
-  origin: "https://steller-mkwi.onrender.com", 
+  origin: ["http://localhost:5173 " , "https://steller-mkwi.onrender.com"],
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
       credentials: true, } } );
 
