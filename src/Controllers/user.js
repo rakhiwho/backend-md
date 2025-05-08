@@ -3,6 +3,7 @@ import { UserError } from "../Errors/userError.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import PostModel from "../Model/post.js";
+import dotenv from "dotenv";
 
 export const get_loggedIn_User = async (req, res) => {
   try {
@@ -37,7 +38,7 @@ export const register = async (req, res) => {
 
   try {
     const user = await UserModel.findOne({ userName: userName });
-    console.log("hey its success till here");
+  
     if (user) {
       return res.status(400).json({ type: UserError.USERNAME_ALREADY_EXISTS });
     }
@@ -55,22 +56,28 @@ export const login = async (req, res) => {
 
   if (!userName || !password) {
     return res.status(400).json({ type: UserError.MISSING_INFO });
-  }
+  } 
   try {
     const user = await UserModel.findOne({ userName: userName });
+    
+
     if (!user) {
       return res.status(400).json({ type: UserError.NO_USER_FOUND });
     }
+   
     const isValidPassword = await bcrypt.compare(password, user.password);
-    if (!isValidPassword) {
-      return res.status(500).json({ type: UserError.WRONG_CREDENIALS });
-    }
 
+    if (!isValidPassword) {
+      return res.status(401).json({ type: UserError.WRONG_CREDENIALS });
+    } 
+ 
     const token = jwt.sign({ userID: user._id }, process.env.SECRET , { expiresIn: "1h" });
+    console.log(userName)
     res.cookie("access_token", token, { httpOnly: true, secure: false });
     res.json({ token, userID: user._id });
+
   } catch (error) {
-    res.status(401).json({ type: error });
+    res.status(500).json({ type: error });
   }
 };
 
@@ -96,3 +103,9 @@ export const change_user_privacy = async (req, res) => {
     return res.status(500).json("internal server error");
   }
 };
+
+export const logout = (req , res)=>{
+ 
+  res.clearCookie("access_token", { path: "/", httpOnly: true });
+  res.status(200).json({ message: "Cookies removed and user logged out." });
+}

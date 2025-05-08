@@ -5,8 +5,9 @@ import { UserError } from "../Errors/userError.js";
 import convoModel from "../Model/convo.js";
 
 export const userInfo = async (req, res) => {
-   
+  console.log("hello")
   const { id } = req.params;
+
   try {
     const user = await UserModel.findById(id);
 
