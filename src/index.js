@@ -14,7 +14,7 @@ import cors from "cors"
 const emitter = new EventEmitter();
 emitter.setMaxListeners(20);
 app.use(cors({ 
-  origin: ["http://localhost:5173 " , "https://steller-mkwi.onrender.com"],
+  origin: ["http://localhost:3000 " , "https://steller-mkwi.onrender.com"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 }))
