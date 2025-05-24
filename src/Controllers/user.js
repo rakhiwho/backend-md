@@ -31,7 +31,7 @@ export const getusers = async (req, res) => {
 
 export const register = async (req, res) => {
   const { userName, password } = req.body;
-
+    console.log(req.body)
   if (!userName || !password) {
     return res.status(400).json({ type: UserError.MISSING_INFO });
   }
